@@ -1,15 +1,13 @@
-let chaturl = '';
-let chattitle = '';
-function generateEndpoint(title, url) {
-  chattitle = title;
-  chaturl = url.replace('canvas?', 'webchat?');
-}
+function generateEndpoint(title, url, graphic) {
+  let chaturl = url.replace('canvas?', 'webchat?');
+  let chattitle = title;
+  let chatgraphic = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
+  chatgraphic = graphic || chatgraphic;
 
-(() => {
   const launcher = document.createElement("button");
   launcher.id = "open-chat";
   launcher.type = "button";
-  launcher.setHTMLUnsafe(`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`);
+  launcher.setHTMLUnsafe(chatgraphic);
   launcher.setAttribute("aria-label", "Open chatbot");
   launcher.setAttribute("aria-expanded", "false");
 
@@ -21,7 +19,7 @@ function generateEndpoint(title, url) {
 
   popup.innerHTML = `
     <div class="copilot-header" role="complementary" aria-label="Chat Assistant">
-      <span class="copilot-title">${chattitle}</span>
+      <span id="copilot-title" class="copilot-title">${chattitle}</span>
       <button class="copilot-close" type="button" aria-label="Close chatbot">&times;</button>
     </div>
     <div id="copilot-wrapper">
@@ -79,4 +77,4 @@ function generateEndpoint(title, url) {
       setOpen(false);
     }
   });
-})();
+}

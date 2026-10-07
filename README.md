@@ -83,13 +83,15 @@ We have an example of this below.
 index_copilot.html needs to have the following:
 ```
     <script>
-      generateEndpoint(' ** chatbot title ** ', ' ** chatbot web URL ** ');
+      generateEndpoint(' ** chatbot title ** ', ' ** chatbot web URL ** ', ' ** chatbot image ** ');
     </script>
 ```
 
 The chatbot title is whatever you want the title of the chatbot to be. 
 
 You get the chatbot web URL by going to Copilot Studio Agent and choosing the arrow by the Publish Drodown. Go to the "Web app" and find the `<iframe src="...">`. Copy the item inside the `src` variable and put it as the chatbot web URL. Alternatively, you can just copy the "Demo website" and replace `canvas?` with `webchat?`.
+
+The chatbot image is optional. You can inject the HTML of the SVG, the image tag, or a font awesome HTML tag. If this is blank, then it will default to a standard SVG chatbot. 
 
 ### Activation with GitHub Copilot option
 
