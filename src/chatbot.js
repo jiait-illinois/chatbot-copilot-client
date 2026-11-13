@@ -95,6 +95,7 @@
         const botTitle = node.hasAttribute('data-title') ? node.getAttribute('data-title') : 'Chatbot';
         const botImage = node.hasAttribute('data-bot-image') ? node.getAttribute('data-bot-image') : "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiIAAC4iAari3ZIAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMTITAUd0AAAAuGVYSWZJSSoACAAAAAUAGgEFAAEAAABKAAAAGwEFAAEAAABSAAAAKAEDAAEAAAACAAAAMQECABEAAABaAAAAaYcEAAEAAABsAAAAAAAAAN+TBADoAwAA35MEAOgDAABQYWludC5ORVQgNS4xLjEyAAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlgAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAAALLLdBIBfLCwAAAzVJREFUeF7t2sFrXFUUx/Hvee9NJhNr2mZa0kQEs2iMu4hQwUXoxiwm4KILUfcuCor+Ba501y4KKiIign+DA1mJbiqKEF00Q4vgQhOrpmlNJJnJvHtcTAyZY1PimztDEs4H7mbuvDN3fu/Om5l7HzjnnHPOOeeOAbEPFDUxU3sZuNhS2mo7+yQVyCADvlht1JdsfxHRApmcqX2Vw9zdYHv6SGCy8w7eXGnU37fdRUQLJH26tvjCUJh/55kVymlOv2dJKsryg1Fev11lItWrq436R/Y5RUQLhOmFxYWRfP7TS7eoZNuoxiv9MFnS5vu1J5n77gkulPTqb5ECSewDvVCgrQltTQfSco16SiF2ICeBB2J4IIYHYkQNRIBElIRAIvtbb1/CnbqmJqEz+N5K/0fEQJSWwnqzwr3mqa52v1UpPHJB2VFhzdS813ycBztZ9G+ZaOUmZmpfJnD5dBq6iuZAIvDe9B9cHv+VoIc/B4KyHTI+vjPFJ3cfY1S0q3ZLhY0gCLyx2qh/sK+rsJiBvKUwu67sBGSvsKChmcuV18aa56/NLjOc6KHnSio5P21Uee7mFOWMmwGWOn9fOvNtBGVEyIDPVhv1r+3xRUQL5JEuLnzzypnW89dmlxlJc7rP88FSybn91zkuffsU51J9+89G/YZ9TmyHn7+9ESl4YRWAzrGp7euHQQXSo8PNqBiOSSCD44EYHojhgRgeiOGBGB6I4YEYHojhgRgeiOGBGB6I4YEYHohxTAIptrhUxKAC0aKb3wrQOTa3ff1QbJQPMbm7yHx/d5H5XwkatnK58urZ1vnrz97qaZEZWOKAReaVo7bI/KhtiJIo706vMTf+y//ehtjKS3x4Z4rPf69wSroHfKS3IZiuLb5YCfM3Zn9mON3ZW1nX3TM9Wtoq9AkVlFZI2GwP79vcgExyfliv8tKP41zIjuT9IcKQwNnyFmPlzb1WLW9yZmi78EspwlCiVMt/d9UdK29wutSOfr0tNsoDKBBUCCQE3d96m4iduqYmCYGocxxiB3ISeCCGB2J4IEbUQATIJJBJPpCWSvxf9dGu0X7jruG3dhsn5eZ/55xzzjnn3LHwD4n7imXQ2CN5AAAAAElFTkSuQmCC";
         const userImage = node.hasAttribute('data-user-image') ? node.getAttribute('data-user-image') : "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABcCAYAAADEQVOwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATgSURBVHhe7ZxNSCpdGMefKSdIXAQllYELQTBpYeCiNpFIEeSmqHXRx9pNu/aB25ZBixCMQHfVrloFSVGbvobARIsimFAwBZt87ublhXvm5b4ePc/Yvff84L95tHPO86uG8cwpBRERJHXTxhYkv0YK40QK40QK40QK40QK40QK40QK40QK40QK40QK40QK40QK40QK40QK46Slwj4/P+Hs7Ayi0Sh4vV5ob28HRVFAURTo6OgAn88H0WgU0uk0fH19sV/eGrAFlMtl3N7eRqfTiQBQV9xuN+7t7aFhGOxwlmK5ME3TMBAImITUm3A4jC8vL+ywlmGpsP39fbTb7SYJvPF4PHh7e8sObwmWCUulUqiqqqn5RuP1ejGbzbLTkGOJsMvLS+zq6jI13WzC4TAWCgV2OlLIhZXLZYxEIqZmRWVjYwNrtRo7LRnkwlKpFCqKYmpUVAYGBjCTybDTkkF6H1apVGBrawsoH30+Pz/DwcEBWyaDVFg2m4Xz83O2LJxkMgmlUoktk0Aq7O7uDt7f39mycDRNg7e3N7ZMAqmw+/t7tkRCsVgEXdfZMgmkwjRNY0skVCoVeH19ZcskkAr7E5HCOCEV5vf72RIJdrsdXC4XWyaBVNjg4CBbIsHpdEJfXx9bJoFU2NDQkCWNBINB6O3tZcskkApzu90wPj7OloUzNzcHNpuNLZNAKsxms8HS0hK0tdFN4/P5IBQKsWU62A+XoqlWq7i4uGj60Cwq8XicnZIUcmGIiNlsFr1er6nZZrO4uIjVapWdjhRLhCEiptNpoZuIwWAQ8/k8Ow05lglDRDw/P8eenh5T87xplSy0Whgi4uPjI46Ojpok1Jv5+XnUdZ0d1jIsF4aIaBgGJhIJrueSPp8Pj46OLN2O/i8UpNwO/R++vr7g4uICEokEHB4eQiaTgVqtBgAAqqqC3++H6elpWFhYAK/XC4qisENYTkuF/Y7Q3VH+obTkJwwR4eXlBY6Pj+Hk5AROT0/h6ekJPj4+fnqf0+kEj8cDY2NjMDk5CSMjI+BwOH56j+WwFzVKcrkcrq+vc13s2QQCAYzH41gqldjhLcESYTc3NzgxMWFqvpmoqopra2tYLBbZ6UghFZbP53FmZsbUrMioqoqxWAzL5TI7PQkkwmq1Gu7u7go5qVNvAoEAaprGLkU4woWVSiXS3YlfRVVV3NnZIb25FSpM13WcnJw0NWJ1YrEY2UlFYcJ0XcdQKGRafKuysbFBIk2IsEKhgOFw2LToVicWiwn/9WxaWLVaxdXVVdNiv0Pa2towmUyyS26KpoXF43HTQr9T+vv78eHhgV12wzQl7Pr6WsiGIHUikYiw+7SGhX1+fuLy8rJpcd8xiqJgKpViW2iIhncrcrmcpSf/mgERIZFIgGEY7EvcNCxM0zTLjhiJ4OrqSsgZsoaFifhuWYlhGP/u5jZDw8L+VqQwTqQwTqQwTqQwTqQwTqQwTqQwTqQwTqQwThoW1tnZ+S0Oh9SLw+EAVVXZMjcNCxseHoZgMMiWvy2zs7PQ3d3Nlvlh93t4EHWikDpTU1PC/ja8KWH4z9PtlZUVof8xQFRcLhdubm4K223FVh+o+x1p+Br2tyKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcSKFcfID38stA/D4OUQAAAAASUVORK5CYII=";
+        const chatMessage = node.getAttribute('data-message') || '';
         generateEndpoint(dataEndpoint);
         generateBotAndUserImages(botImage, userImage);
 
@@ -130,6 +131,29 @@
 </button>
 `;
 
+        if (chatMessage !== '') {
+          const launcherMessage = document.createElement('div');
+          launcherMessage.id = 'open-chat-message';
+
+          const messageText = document.createElement('span');
+          messageText.className = 'open-chat-message-text';
+          messageText.textContent = chatMessage;
+          messageText.addEventListener('click', showChat);
+
+          const messageClose = document.createElement('button');
+          messageClose.type = 'button';
+          messageClose.className = 'open-chat-message-close';
+          messageClose.setAttribute('aria-label', 'Dismiss message');
+          messageClose.innerHTML = '<img src="https://cdn.brand.illinois.edu/icons/solid/blue/cancel.svg" alt="">';
+          messageClose.addEventListener('click', () => {
+            launcherMessage.classList.add('dismissed');
+            document.getElementById('open-chat').focus();
+          });
+
+          launcherMessage.append(messageText, messageClose);
+          node.appendChild(launcherMessage);
+        }
+
         if (backgroundImage) {
           const webchatElement = document.getElementById('webchat');
           webchatElement.style.backgroundImage = `url(${backgroundImage})`;
@@ -163,6 +187,7 @@
         const openButton = document.getElementById("open-chat");
         popup.classList.add("visible");
         openButton.classList.add("hidden");
+        document.getElementById("open-chat-message")?.classList.add("hidden");
       }
 
       function hideChat() {
@@ -170,6 +195,7 @@
         const openButton = document.getElementById("open-chat");
         popup.classList.remove("visible");
         openButton.classList.remove("hidden");
+        document.getElementById("open-chat-message")?.classList.remove("hidden");
         openButton.focus();
       }
 
