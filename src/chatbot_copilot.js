@@ -1,4 +1,4 @@
-function generateEndpoint(title, url, graphic) {
+function generateEndpoint(title, url, graphic, chatMessage) {
   let chaturl = url.replace('canvas?', 'webchat?');
   let chattitle = title;
   let chatgraphic = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
@@ -10,6 +10,21 @@ function generateEndpoint(title, url, graphic) {
   launcher.setHTMLUnsafe(chatgraphic);
   launcher.setAttribute("aria-label", "Open chatbot");
   launcher.setAttribute("aria-expanded", "false");
+
+  const launcherMessage = document.createElement("div");
+  const launcherMessageText = document.createElement("span");
+  const launcherMessageClose = document.createElement("button");
+  let messageDismissed = false;
+  if ((chatMessage || '') !== '') {
+    launcherMessage.id = "open-chat-message";
+    launcherMessageText.className = "open-chat-message-text";
+    launcherMessageText.textContent = chatMessage;
+    launcherMessageClose.className = "open-chat-message-close";
+    launcherMessageClose.type = "button";
+    launcherMessageClose.setAttribute("aria-label", "Dismiss message");
+    launcherMessageClose.setHTMLUnsafe('<img src="https://cdn.brand.illinois.edu/icons/solid/blue/cancel.svg" alt="">');
+    launcherMessage.append(launcherMessageText, launcherMessageClose);
+  }
 
   const popup = document.createElement("section");
   popup.className = "copilot-popup";
@@ -45,6 +60,7 @@ function generateEndpoint(title, url, graphic) {
     }
 
     popup.dataset.open = String(open);
+    launcherMessage.hidden = open || messageDismissed;
     launcher.setAttribute("aria-expanded", String(open));
     launcher.setAttribute(
       "aria-label",
@@ -64,12 +80,22 @@ function generateEndpoint(title, url, graphic) {
     setOpen(popup.dataset.open !== "true");
   });
 
+  launcherMessageText.addEventListener("click", () => {
+    setOpen(true);
+  });
+
+  launcherMessageClose.addEventListener("click", () => {
+    messageDismissed = true;
+    launcherMessage.hidden = true;
+    launcher.focus();
+  });
+
   closeButton.addEventListener("click", () => {
     setOpen(false);
   });
 
   document.addEventListener("DOMContentLoaded", () => {
-    document.body.append(popup, launcher);
+    document.body.append(popup, launcherMessage, launcher);
   });
 
   document.addEventListener("keydown", event => {

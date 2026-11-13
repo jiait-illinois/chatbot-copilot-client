@@ -155,6 +155,59 @@
       color: white;
       transition: transform 0.2s ease;
     }
+    #open-chat-message {
+      position: fixed;
+      bottom: calc(var(--chat-button-bottom) + 64px + 14px);
+      right: var(--chat-button-right);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 8px 8px 14px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--il-blue);
+      font: 600 14px var(--il-font-sans), sans-serif;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      z-index: 998;
+    }
+    #open-chat-message.hidden,
+    #open-chat-message.dismissed {
+      display: none;
+    }
+    .open-chat-message-text {
+      cursor: pointer;
+    }
+    .open-chat-message-close {
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+    .open-chat-message-close:hover,
+    .open-chat-message-close:focus-visible {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .open-chat-message-close img {
+      width: 16px;
+      height: 16px;
+    }
+    #open-chat-message::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      right: 24px;
+      border: 7px solid transparent;
+      border-top-color: #fff;
+    }
     @media (max-width: 768px) {
       .content-grid {
         grid-template-columns: 1fr;

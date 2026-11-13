@@ -29,7 +29,8 @@ Then in the body where you want the button, add this:
      data-endpoint="[insert endpoint]"
      data-title=""
      data-bot-image=""
-     data-user-image=""></div>
+     data-user-image=""
+     data-message=""></div>
 ```
 
 You get the endpoint by going to Copilot Studio Agent and choosing Channels --> Email. Copy the token endpoint for this. 
@@ -41,6 +42,8 @@ Put this endpoint in the `data-endpoint` attribute in the `<div>` tag.
 For `data-title`, put the name of the chatbot. It will default to "Chatbot". 
 
 For `data-bot-image` and `data-user-image` attributes, you can include paths to images. If you delete these attributes, it will default to generic images.
+
+For `data-message`, you can add a short message (for example, "Chat with us") that appears above the chat button until the chat is opened or the user dismisses it with the X. If it is blank or removed, no message is shown.
 
 Example (note that we have a custom bot image but a default user image):
 ```
@@ -81,17 +84,22 @@ We have an example of this below.
 * chatbot_copilot.css: CSS style that contains chatbot styling
 
 index_copilot.html needs to have the following:
+
 ```
+    <script src="//cdn.toolkit.illinois.edu/illinois-webchat/latest/chatbot_copilot.js"></script>
+    <link rel="stylesheet" href="//cdn.toolkit.illinois.edu/illinois-webchat/latest/chatbot_copilot.css"></script>
     <script>
-      generateEndpoint(' ** chatbot title ** ', ' ** chatbot web URL ** ', ' ** chatbot image ** ');
+      generateEndpoint(' ** chatbot title ** ', ' ** chatbot web URL ** ', ' ** chatbot image ** ', ' ** chatbot message ** ');
     </script>
 ```
 
 The chatbot title is whatever you want the title of the chatbot to be. 
 
-You get the chatbot web URL by going to Copilot Studio Agent and choosing the arrow by the Publish Drodown. Go to the "Web app" and find the `<iframe src="...">`. Copy the item inside the `src` variable and put it as the chatbot web URL. Alternatively, you can just copy the "Demo website" and replace `canvas?` with `webchat?`.
+You get the chatbot web URL by going to Copilot Studio Agent and choosing the arrow by the Publish Drodown. Go to the "Web app" and find the `<iframe src="...">`. Copy the item inside the `src` variable and put it as the chatbot web URL. Alternatively, you can just copy the "Demo website" -- the code will replace the "canvas" with "webchat" behind the scenes.
 
-The chatbot image is optional. You can inject the HTML of the SVG, the image tag, or a font awesome HTML tag. If this is blank, then it will default to a standard SVG chatbot. 
+The chatbot image is optional. You can inject the HTML of the SVG, the image tag, or a font awesome HTML tag. If this is blank, then it will default to a standard SVG chatbot.
+
+The chatbot message is optional. If set (for example, "Chat with us"), a small message appears above the chat button until the chat is opened or the user dismisses it with the X. If blank, no message is shown. 
 
 ### Activation with GitHub Copilot option
 
